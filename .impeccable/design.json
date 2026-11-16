@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-13T12:00:00Z",
+  "title": "Design System: PONTO X Comunicação Visual",
+  "extensions": {
+    "colorMeta": {
+      "red": { "role": "primary", "displayName": "Logo Red", "canonical": "#cf040a", "tonalRamp": ["#3d0102", "#5e0204", "#860306", "#a90308", "#cf040a", "#ff4a4f", "#ff9a9c", "#ffe0e1"] },
+      "red-deep": { "role": "primary", "displayName": "Pressed Red", "canonical": "#a90308", "tonalRamp": ["#300102", "#4f0103", "#700205", "#a90308", "#c8262b", "#e0676a", "#f1abad", "#fbe3e4"] },
+      "red-hot": { "role": "primary", "displayName": "Signal Red", "canonical": "#ff4a4f", "tonalRamp": ["#4a0a0c", "#7a1215", "#b01a1f", "#e02a30", "#ff4a4f", "#ff7c80", "#ffb2b4", "#ffe6e7"] },
+      "ink": { "role": "neutral", "displayName": "Shop-Window Black", "canonical": "#130d0e", "tonalRamp": ["#130d0e", "#1c1415", "#2a1e1f", "#594b4c", "#8f8384", "#bcafb0", "#ece7e4", "#f6f4f2"] },
+      "ink-2": { "role": "neutral", "displayName": "Sheet Black", "canonical": "#1c1415", "tonalRamp": ["#130d0e", "#1c1415", "#2a1e1f", "#594b4c", "#8f8384", "#bcafb0", "#ece7e4", "#f6f4f2"] },
+      "ink-3": { "role": "neutral", "displayName": "Proof Black", "canonical": "#2a1e1f", "tonalRamp": ["#130d0e", "#1c1415", "#2a1e1f", "#594b4c", "#8f8384", "#bcafb0", "#ece7e4", "#f6f4f2"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#f6f4f2", "tonalRamp": ["#130d0e", "#1c1415", "#2a1e1f", "#594b4c", "#8f8384", "#bcafb0", "#ece7e4", "#f6f4f2"] },
+      "paper-2": { "role": "neutral", "displayName": "Paper Fold", "canonical": "#ece7e4", "tonalRamp": ["#130d0e", "#1c1415", "#2a1e1f", "#594b4c", "#8f8384", "#bcafb0", "#ece7e4", "#f6f4f2"] },
+      "mute": { "role": "neutral", "displayName": "Ash", "canonical": "#bcafb0", "tonalRamp": ["#130d0e", "#1c1415", "#2a1e1f", "#594b4c", "#8f8384", "#bcafb0", "#ece7e4", "#f6f4f2"] },
+      "mute-ink": { "role": "neutral", "displayName": "Ink Grey", "canonical": "#594b4c", "tonalRamp": ["#130d0e", "#1c1415", "#2a1e1f", "#594b4c", "#8f8384", "#bcafb0", "#ece7e4", "#f6f4f2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Sign Display", "purpose": "Hero H1 only; lights up once like an LED letter." },
+      "display-secondary": { "displayName": "Sign Display Secondary", "purpose": "Hero H2 only; replaces the H1 on scroll." },
+      "headline": { "displayName": "Section Headline", "purpose": "Every section title and the hero closing CTA; Archivo expanded (wdth 118), revealed word by word." },
+      "statement": { "displayName": "Statement", "purpose": "Lead paragraph under headlines, 30-40ch." },
+      "title": { "displayName": "Name", "purpose": "Project and video names." },
+      "title-large": { "displayName": "Name Large", "purpose": "Service group names and process step titles." },
+      "body": { "displayName": "Body", "purpose": "Running text, lists, contact values." },
+      "small": { "displayName": "Small", "purpose": "Metadata, captions, legal line." },
+      "label": { "displayName": "Button Label", "purpose": "Buttons; Archivo 700 at wdth 108." }
+    },
+    "shadows": [
+      { "name": "none", "value": "none", "purpose": "The system casts no box shadows; depth is tint and colour-field contrast." },
+      { "name": "led-glow-rest", "value": "0 0 10px rgba(255,255,255,0.28), 0 0 28px rgba(207,4,10,0.25)", "purpose": "Text glow on hero H1/H2 only (brief exception)." },
+      { "name": "led-glow-peak", "value": "0 0 14px rgba(255,255,255,0.85), 0 0 38px rgba(255,74,79,0.55)", "purpose": "Peak of the one-time LED light-up keyframe on the hero H1." },
+      { "name": "scrim-top", "value": "linear-gradient(to bottom, rgba(19,13,14,0.62), rgba(19,13,14,0))", "purpose": "160px legibility veil under the transparent header over the hero video." },
+      { "name": "scrim-bottom", "value": "linear-gradient(to top, rgba(19,13,14,0.82) 0%, rgba(19,13,14,0.5) 38%, rgba(19,13,14,0) 100%)", "purpose": "Legibility veil under hero text, 62% of viewport height." },
+      { "name": "red-glow", "value": "radial-gradient(ellipse 55% 50% at 12% 30%, rgba(207,4,10,0.26), transparent 70%)", "purpose": "Brief-requested red glow on dark sections only (Projects 0.18, Contact 0.26, hero CTA 0.42)." },
+      { "name": "spotlight", "value": "radial-gradient(260px circle at var(--mx) var(--my), rgba(255,74,79,0.22), transparent 70%)", "purpose": "Mouse-follow light on service panels and project cards, fine pointers only." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The single easing curve for transitions, entrances and the lightbox grow." },
+      { "name": "button-state", "value": "background-color 0.25s, color 0.25s, transform 0.2s", "purpose": "Button hover/active; notch scales 1.35 and arrow slides 4px over 0.3s." },
+      { "name": "word-reveal", "value": "0.7s opacity / 0.9s transform / 0.7s blur(6px), 0.45em rise, 55ms stagger", "purpose": "Section headlines enter word by word." },
+      { "name": "rise", "value": "0.8s opacity / 0.9s transform, 24px rise, delay 0-220ms", "purpose": "Block entrances for images and paragraphs." },
+      { "name": "led-on", "value": "1s, 70ms stagger + 150ms lead, once", "purpose": "Hero H1 light-up; skipped under reduced motion." },
+      { "name": "hero-scrub", "value": "GSAP ScrollTrigger scrub 0.35, video ease factor 0.14; video runs 13%-86% of a 420vh/560vh section", "purpose": "Scroll-scrubbed hero video, H1/H2 hand-off, progress bar, diagonal wipe into the CTA." },
+      { "name": "panel-expand", "value": "grid-template-rows 0fr to 1fr, 0.5s", "purpose": "Services panel open; photo clip wipe 0.7s." },
+      { "name": "lightbox-grow", "value": "560ms open / 320ms close (FLIP)", "purpose": "Photo grows from its card into the dialog." },
+      { "name": "marquee", "value": "60s linear infinite", "purpose": "Brand name strip; pausable, static under reduced motion." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "Reveals show immediately, hover offsets removed, marquee wraps, hero scrub unsmoothed, timeline complete, no lightbox grow, no smooth scroll." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid Logo Red action with the 14px X cut; every WhatsApp action.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Solicitar orçamento <svg class=\"ds-arrow\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 48px; padding: 0.8rem 1.35rem; font-family: var(--font-archivo, 'Archivo'), 'Helvetica Neue', sans-serif; font-weight: 700; font-size: 1rem; line-height: 1.1; font-variation-settings: 'wdth' 108; letter-spacing: 0.005em; text-decoration: none; white-space: nowrap; border: 2px solid var(--color-red, #cf040a); cursor: pointer; transition: background-color 0.25s cubic-bezier(0.16,1,0.3,1), color 0.25s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary { background: var(--color-red, #cf040a); color: #fff; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%); } .ds-btn-primary:hover { background: var(--color-red-deep, #a90308); border-color: var(--color-red-deep, #a90308); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 3px solid var(--color-red-hot, #ff4a4f); outline-offset: 3px; } .ds-arrow { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-btn:hover .ds-arrow { transform: translateX(4px); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Red-edged transparent button with a solid red corner notch; secondary actions.",
+      "html": "<div style=\"background:#130d0e;padding:24px\"><a class=\"ds-btn-ghost\" href=\"#\">Ver nossos trabalhos</a></div>",
+      "css": ".ds-btn-ghost { position: relative; display: inline-flex; align-items: center; gap: 0.6rem; min-height: 48px; padding: 0.8rem 1.35rem; font-family: var(--font-archivo, 'Archivo'), 'Helvetica Neue', sans-serif; font-weight: 700; font-size: 1rem; line-height: 1.1; font-variation-settings: 'wdth' 108; color: #fff; background: transparent; text-decoration: none; border: 2px solid var(--color-red, #cf040a); transition: background-color 0.25s cubic-bezier(0.16,1,0.3,1), color 0.25s cubic-bezier(0.16,1,0.3,1); } .ds-btn-ghost::after { content: ''; position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; background: var(--color-red, #cf040a); clip-path: polygon(0 0, 100% 0, 100% 100%); transform-origin: top right; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-btn-ghost:hover { background: var(--color-red, #cf040a); color: #fff; } .ds-btn-ghost:hover::after { transform: scale(1.35); } .ds-btn-ghost:active { transform: translateY(1px); } .ds-btn-ghost:focus-visible { outline: 3px solid var(--color-red-hot, #ff4a4f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Square toggle chip for filtering projects by service group (no counts).",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Todos</button><button class=\"ds-chip\" aria-pressed=\"false\">Lonas e Banners</button></div>",
+      "css": ".ds-chips { display: flex; gap: 8px; padding: 16px; background: #130d0e; } .ds-chip { min-height: 44px; padding: 8px 16px; font-family: var(--font-archivo, 'Archivo'), sans-serif; font-weight: 600; font-size: 1rem; color: #fff; background: var(--color-ink-2, #1c1415); border: 2px solid var(--color-ink-3, #2a1e1f); border-radius: 0; cursor: pointer; transition: border-color 0.15s, background-color 0.15s; } .ds-chip span { color: var(--color-mute, #bcafb0); } .ds-chip:hover { border-color: var(--color-red, #cf040a); } .ds-chip[aria-pressed='true'] { background: var(--color-red, #cf040a); border-color: var(--color-red, #cf040a); } .ds-chip[aria-pressed='true'] span { color: #fff; } .ds-chip:focus-visible { outline: 3px solid var(--color-red-hot, #ff4a4f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card-project",
+      "description": "Cut-corner Sheet Black card: 4:5 photo, name, metadata, ghost ask.",
+      "html": "<div style=\"background:#130d0e;padding:24px\"><article class=\"ds-card\"><div class=\"ds-card-media\"></div><div class=\"ds-card-body\"><p class=\"ds-card-name\">Ciocco Cookies</p><p class=\"ds-card-meta\">Alimentação · Fachada</p><a class=\"ds-card-ask\" href=\"#\">Quero um projeto como este</a></div></article></div>",
+      "css": ".ds-card { width: 300px; display: flex; flex-direction: column; background: var(--color-ink-2, #1c1415); color: #fff; clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 18.72px, 100% 100%, 0 100%); font-family: var(--font-archivo, 'Archivo'), sans-serif; } .ds-card-media { aspect-ratio: 4/5; background: linear-gradient(160deg, #2a1e1f, #594b4c); transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); } .ds-card:hover .ds-card-media { transform: scale(1.04); } .ds-card-body { padding: 20px; } .ds-card-name { margin: 0; font-weight: 700; font-size: 1.25rem; line-height: 1.15; letter-spacing: -0.01em; font-variation-settings: 'wdth' 112; } .ds-card-meta { margin: 6px 0 0; font-size: 0.875rem; line-height: 1.45; color: var(--color-mute, #bcafb0); } .ds-card-ask { display: inline-flex; margin-top: 20px; min-height: 44px; align-items: center; padding: 8px 16px; font-size: 0.875rem; font-weight: 700; color: #fff; text-decoration: none; border: 2px solid var(--color-red, #cf040a); transition: background-color 0.25s; } .ds-card-ask:hover { background: var(--color-red, #cf040a); } .ds-card-ask:focus-visible { outline: 3px solid var(--color-red-hot, #ff4a4f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Service Panel",
+      "kind": "custom",
+      "refersTo": "service-panel",
+      "description": "Stacked service-group panels; the active one fills Logo Red and turns its ticks white.",
+      "html": "<ol class=\"ds-panels\"><li class=\"ds-panel is-open\"><h3>Fachadas e Letreiros</h3><ul><li><i></i>Fachadas</li><li><i></i>Letreiros</li></ul></li><li class=\"ds-panel\"><h3>Lonas e Banners</h3><ul><li><i></i>Lonas convencionais</li><li><i></i>Wind banner</li></ul></li></ol>",
+      "css": ".ds-panels { list-style: none; margin: 0; padding: 0; width: 520px; font-family: var(--font-archivo, 'Archivo'), sans-serif; } .ds-panel { display: grid; grid-template-columns: 5fr 4fr; gap: 32px; padding: 36px 32px; background: var(--color-ink, #130d0e); transition: background-color 0.5s; } .ds-panel + .ds-panel { background: var(--color-ink-2, #1c1415); } .ds-panel:hover, .ds-panel.is-open { background: var(--color-red, #cf040a); } .ds-panel h3 { margin: 0; color: #fff; font-weight: 700; font-size: 1.75rem; line-height: 1.15; letter-spacing: -0.01em; font-variation-settings: 'wdth' 112; } .ds-panel ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 1.0625rem; color: var(--color-mute, #bcafb0); } .ds-panel.is-open ul, .ds-panel:hover ul { color: #fff; } .ds-panel i { display: inline-block; width: 6px; height: 10px; margin-right: 12px; transform: skewX(-36deg); background: var(--color-red, #cf040a); } .ds-panel.is-open i, .ds-panel:hover i { background: #fff; }"
+    },
+    {
+      "name": "Timeline Step",
+      "kind": "custom",
+      "refersTo": "timeline-node",
+      "description": "Process step on a red ground: cut ink node that turns white when the drawn line reaches it.",
+      "html": "<div class=\"ds-tl\"><div class=\"ds-tl-rail\"></div><div class=\"ds-tl-step is-on\"><span class=\"ds-tl-node\">1</span><h3>Envie sua ideia</h3></div><div class=\"ds-tl-step\"><span class=\"ds-tl-node\">2</span><h3>Receba a proposta</h3></div></div>",
+      "css": ".ds-tl { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 32px; background: var(--color-red, #cf040a); color: #fff; font-family: var(--font-archivo, 'Archivo'), sans-serif; } .ds-tl-rail { position: absolute; left: 32px; right: 32px; top: 51px; height: 4px; background: linear-gradient(to right, #fff 50%, rgba(19,13,14,0.25) 50%); } .ds-tl-step { position: relative; } .ds-tl-node { display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; font-weight: 800; font-size: 1.125rem; background: var(--color-ink, #130d0e); color: #fff; clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 18.72px, 100% 100%, 0 100%); transition: background-color 0.5s, color 0.5s; } .ds-tl-step.is-on .ds-tl-node { background: #fff; color: var(--color-red, #cf040a); } .ds-tl-step h3 { margin: 32px 0 0; font-weight: 700; font-size: 1.75rem; line-height: 1.15; font-variation-settings: 'wdth' 112; }"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "refersTo": "header-solid",
+      "description": "Fixed 68px header: transparent over the hero, solid ink afterwards; red underline on hover.",
+      "html": "<header class=\"ds-header\"><span class=\"ds-logo\">PONTO<b>X</b></span><nav><a href=\"#\">Serviços</a><a href=\"#\">Projetos</a><a href=\"#\">Vídeos</a><a href=\"#\">Contato</a><a class=\"ds-header-cta\" href=\"#\">Orçamento</a></nav></header>",
+      "css": ".ds-header { display: flex; align-items: center; justify-content: space-between; height: 68px; padding: 0 48px; background: var(--color-ink, #130d0e); font-family: var(--font-archivo, 'Archivo'), sans-serif; transition: background-color 0.3s; } .ds-logo { color: #fff; font-weight: 800; font-size: 1.25rem; } .ds-logo b { color: var(--color-red, #cf040a); } .ds-header nav { display: flex; align-items: center; gap: 28px; } .ds-header nav a { color: #fff; font-weight: 600; font-size: 1rem; text-decoration: none; text-decoration-color: var(--color-red, #cf040a); text-decoration-thickness: 2px; text-underline-offset: 0.45em; } .ds-header nav a:hover { text-decoration-line: underline; } .ds-header nav a:focus-visible { outline: 3px solid var(--color-red-hot, #ff4a4f); outline-offset: 3px; } .ds-header nav .ds-header-cta { position: relative; min-height: 42px; display: inline-flex; align-items: center; padding: 8px 1.35rem; font-weight: 700; border: 2px solid var(--color-red, #cf040a); } .ds-header nav .ds-header-cta::after { content: ''; position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; background: var(--color-red, #cf040a); clip-path: polygon(0 0, 100% 0, 100% 100%); } .ds-header nav .ds-header-cta:hover { background: var(--color-red, #cf040a); text-decoration: none; }"
+    },
+    {
+      "name": "Arrow Link",
+      "kind": "custom",
+      "refersTo": "button-ghost",
+      "description": "Bold link with a 2px red underline and a sliding arrow; in-page jumps.",
+      "html": "<a class=\"ds-link\" href=\"#\">Ver projetos de fachadas <svg class=\"ds-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-archivo, 'Archivo'), sans-serif; font-weight: 700; color: #130d0e; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.3em; text-decoration-color: var(--color-red, #cf040a); } .ds-link .ds-arrow { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-link:hover .ds-arrow { transform: translateX(4px); } .ds-link:focus-visible { outline: 3px solid var(--color-red, #cf040a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Brand Strip",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Text-only client names on paper, separated by skewed red ticks, slow marquee.",
+      "html": "<div class=\"ds-strip\"><div class=\"ds-strip-track\"><span>Cliente A</span><i></i><span>Cliente B</span><i></i><span>Cliente C</span><i></i><span>Cliente D</span><i></i></div></div>",
+      "css": ".ds-strip { overflow: hidden; padding: 24px 0; background: var(--color-paper, #f6f4f2); font-family: var(--font-archivo, 'Archivo'), sans-serif; } .ds-strip-track { display: flex; align-items: center; width: max-content; animation: ds-marquee 60s linear infinite; } .ds-strip:hover .ds-strip-track { animation-play-state: paused; } .ds-strip span { white-space: nowrap; font-size: 1.0625rem; font-weight: 500; color: var(--color-mute-ink, #594b4c); } .ds-strip i { display: inline-block; width: 0.28em; height: 0.7em; margin: 0 24px; transform: skewX(-36deg); background: var(--color-red, #cf040a); } @keyframes ds-marquee { to { transform: translateX(-50%); } } @media (prefers-reduced-motion: reduce) { .ds-strip-track { animation: none; flex-wrap: wrap; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Two-Colour Print Job",
+    "overview": "The site is printed, not decorated. Three inks taken from the PONTO X logo (a tinted near-black, the logo's own red, and a warm paper white) are laid down in flat, full-bleed fields, and the only graphic device is the diagonal cut of the X, at roughly 36 degrees. That cut shows up as red bands crossing light sections, a clipped top-right corner on photos and buttons, slanted section tops that overlap the section above, small skewed red ticks used as bullets and separators, and a diagonal wipe into the hero's closing call to action.\n\nDensity is generous and editorial: big expanded Archivo headlines, wide margins driven by a fluid gutter, long vertical rhythm between sections, and real client photography doing the persuading. Dark and light sections alternate (ink, paper, ink and red, paper, ink, paper, ink) so the page reads like a stack of printed sheets. Corners are square everywhere except where the X cuts them. There are no rounded corners, no drop shadows, and no icon-card grids.\n\nMotion behaves like a sign being installed and switched on. The hero video is scrubbed by scroll, not autoplayed. The hero H1 lights up once like an LED letter. Section titles assemble word by word. Blocks rise into place, and on desktop a soft red light follows the pointer across service panels and project cards.",
+    "keyCharacteristics": [
+      "Three inks only: ink, logo red, paper. Tints of ink (ink-2, ink-3) and paper (paper-2) separate surfaces.",
+      "One motif: the X's ~36° diagonal cut. Nothing else is ornamental.",
+      "Square geometry (0px radius), with the clip-path corner cut as the only departure.",
+      "Expanded, heavy Archivo for titles. Big Shoulders is reserved for the two hero headlines (signage letters).",
+      "Flat surfaces. Depth comes from colour-field contrast, overlapping slanted edges, and the scrims and glows the brief asks for."
+    ],
+    "rules": [
+      { "name": "The Three Inks Rule", "body": "Every surface is ink, red or paper (or one of their listed tints). No other hue enters the system; photography carries all other colour.", "section": "colors" },
+      { "name": "The Signal Red Rule", "body": "Logo Red is for fields, bars, bands and large type. Small red text or outlines on a dark ground use Signal Red instead, for contrast.", "section": "colors" },
+      { "name": "The Sign Face Rule", "body": "Big Shoulders appears only in the hero H1 and H2. Every other heading, including the hero's closing CTA, is Archivo.", "section": "typography" },
+      { "name": "The Sentence Case Rule", "body": "Headlines, buttons and nav are set in sentence case; the type gets its loudness from width and weight, not capitals.", "section": "typography" },
+      { "name": "The Flat Print Rule", "body": "Surfaces never cast shadows. If something needs to lift, put it on the next tint (ink to ink-2 to ink-3) or on red.", "section": "elevation" },
+      { "name": "The Glow Belongs to the Sign Rule", "body": "Text glow is for the hero sign lettering only. Red radial glows sit only on dark sections, never on paper.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build every surface from ink, ink-2, ink-3, red, paper and paper-2; let photography bring all other colour.",
+      "Do cut media and square controls at the top right with the X cut (26px, 72% drop) and keep every other corner square.",
+      "Do use the 14px notch on buttons: clipped on primary, a red triangle on ghost.",
+      "Do keep the diagonal at 36°: bands, skewed ticks, slanted section tops and wipes all share it.",
+      "Do use Signal Red for small red text and focus outlines on dark grounds, and Logo Red for fields and large type.",
+      "Do set section titles in Archivo 800 at wdth 118 and reveal them word by word.",
+      "Do alternate dark and light sections so the page reads as a stack of printed sheets.",
+      "Do give every motion a reduced-motion fallback that keeps state and colour changes."
+    ],
+    "donts": [
+      "Don't round corners or add box shadows; depth comes from tints, red fields and overlapping slants.",
+      "Don't use Big Shoulders outside the hero H1 and H2.",
+      "Don't introduce a second motif (circles, waves, gradients as decoration) next to the X cut.",
+      "Don't put red radial glows on paper sections or text glow outside the hero sign lettering.",
+      "Don't add eyebrow labels above titles; the two in Quem somos and Vídeos are brief-specific exceptions, not a pattern.",
+      "Don't show third-party client logos; client names appear as text.",
+      "Don't autoplay video with sound; the hero is scrubbed silently and the video cards play only on a click."
+    ]
+  }
+}

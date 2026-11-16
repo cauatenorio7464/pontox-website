@@ -1,0 +1,535 @@
+@import "tailwindcss";
+
+/* ============ Identidade PONTO X: azul-preto profundo, vermelho vinho/carmesim e branco ============ */
+/* O logotipo é sempre a imagem original: nada aqui muda as cores dele. */
+:root {
+  --bg-base: #12141c; /* fundo principal (nunca preto puro) */
+  --bg-elevated: #1a1d27; /* superfícies um pouco mais claras */
+  --bg-raised: #252937; /* terceiro nível (marcadores, setas) */
+  --bg-outer-1: #2b303d;
+  --bg-outer-2: #3a4050;
+  --red-wine: #5a0b17; /* base do degradê vermelho */
+  --red-main: #b3152c; /* carmesim: o vermelho de destaque */
+  --red-deep: #8a1023; /* entre o vinho e o carmesim (fichas, hover) */
+  --red-highlight: #e0324a; /* só na pontinha do brilho e em detalhes gráficos */
+  --text-primary: #ffffff;
+  --text-secondary: rgb(255 255 255 / 0.68);
+  --border-subtle: rgb(255 255 255 / 0.1);
+  --radius: 16px;
+  --radius-sm: 12px;
+}
+
+@theme {
+  /* Nomes antigos apontam para a paleta nova (o código continua usando bg-ink, text-mute etc.) */
+  --color-ink: #12141c;
+  --color-ink-2: #1a1d27;
+  --color-ink-3: #252937;
+  --color-red: #b3152c;
+  --color-red-deep: #8a1023;
+  --color-red-hot: #e0324a;
+  --color-wine: #5a0b17;
+  --color-paper: #f6f4f2; /* só para a plaquinha clara atrás de logos escuros */
+  --color-mute: rgb(255 255 255 / 0.68);
+  --color-mute-ink: rgb(255 255 255 / 0.46); /* lista do início: peças que ainda vão aparecer (4,5:1) */
+  --color-line: rgb(255 255 255 / 0.1);
+
+  --font-sign: var(--font-sign-face), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-archivo), "Helvetica Neue", sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --gutter: clamp(16px, 3.2vw, 48px);
+  --header-h: 68px;
+  /* O corte diagonal do X do logotipo: cerca de 36 graus. */
+  --cut: 26px;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-ink);
+  scroll-padding-top: calc(var(--header-h) + 22px);
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  font-variation-settings: "wdth" 100;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-red); color: #fff; }
+
+:focus-visible {
+  outline: 3px solid var(--color-red-hot);
+  outline-offset: 3px;
+}
+
+/* Barra de rolagem no tom da marca */
+html { scrollbar-color: var(--color-red) var(--color-ink-2); }
+
+/* Componentes ficam na camada "components" do Tailwind: assim as classes utilitárias (lg:hidden, text-sm...) podem ajustá-los. */
+@layer components {
+  /* ============ Tipografia ============ */
+  .font-sign {
+    font-family: var(--font-sign);
+    font-variation-settings: "opsz" 72;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 0.92;
+    text-transform: none;
+  }
+
+  .t-title {
+    font-family: var(--font-sans);
+    font-variation-settings: "wdth" 118;
+    font-weight: 800;
+    font-size: clamp(2.1rem, 4.4vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .t-statement {
+    font-size: clamp(1.25rem, 1.75vw, 1.75rem);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+  .t-name {
+    font-variation-settings: "wdth" 112;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .t-small { font-size: 0.875rem; line-height: 1.45; }
+
+  /* ============ Motivo: o corte diagonal do X ============ */
+  .cut-tr, .cut-bl, .cut-both { border-radius: min(var(--radius), 22%); }
+  .cut-tr { clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% calc(var(--cut) * 0.72), 100% 100%, 0 100%); }
+  .cut-bl { clip-path: polygon(0 0, 100% 0, 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut) * 0.72)); }
+  .cut-both {
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% calc(var(--cut) * 0.72), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut) * 0.72));
+  }
+
+  /* Borda superior em diagonal: a seção "corta" a anterior como o X do logotipo */
+  .slant-top, .slant-top-r {
+    --slant: clamp(24px, 4vw, 56px);
+    position: relative;
+    z-index: 1;
+    margin-top: calc(var(--slant) * -1);
+  }
+  .slant-top { clip-path: polygon(0 var(--slant), 100% 0, 100% 100%, 0 100%); }
+  .slant-top-r { clip-path: polygon(0 0, 100% var(--slant), 100% 100%, 0 100%); }
+
+  /* Faixa vermelha diagonal (no ângulo do X) que atravessa seções claras */
+  .band {
+    position: absolute;
+    pointer-events: none;
+    background: var(--color-red);
+    width: clamp(56px, 7vw, 120px);
+    height: 260%;
+    transform: rotate(36deg);
+    transform-origin: center;
+  }
+
+  /* Linha vermelha curta antes do sobretítulo (pedido no briefing) */
+  .eyebrow { /* taste-skill-ignore: sobretítulo pedido explicitamente no briefing (Quem somos e Vídeos) */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 2.25rem;
+    height: 3px;
+    background: var(--color-red);
+  }
+
+  /* ============ Botões ============ */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 48px;
+    padding: 0.8rem 1.35rem;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.1;
+    font-variation-settings: "wdth" 108;
+    letter-spacing: 0.005em;
+    text-decoration: none;
+    border: 1px solid var(--border-subtle); /* taste-skill-ignore: vidro fosco com borda fina pedido no briefing da paleta */
+    border-radius: var(--radius-sm);
+    transition: background 0.25s var(--ease-out-expo), border-color 0.25s var(--ease-out-expo), box-shadow 0.25s var(--ease-out-expo), transform 0.2s var(--ease-out-expo);
+    cursor: pointer;
+  }
+  .btn:active { transform: translateY(1px); }
+  /* Principal: degradê do vinho ao carmesim, com brilho vermelho suave embaixo */
+  .btn-primary {
+    color: #fff;
+    background: linear-gradient(135deg, var(--red-wine) 0%, var(--red-main) 58%); /* taste-skill-ignore: botão em degradê pedido no briefing da paleta */
+    border-color: rgb(224 50 74 / 0.55);
+    box-shadow: 0 8px 20px -12px rgb(179 21 44 / 0.7); /* taste-skill-ignore: brilho do botão pedido no briefing da paleta */
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #74101f 0%, #c81c36 58%); /* taste-skill-ignore: botão em degradê pedido no briefing da paleta */
+    box-shadow: 0 10px 24px -12px rgb(224 50 74 / 0.65); /* taste-skill-ignore: brilho do botão pedido no briefing da paleta */
+  }
+  /* Secundário: vidro fosco */
+  .btn-ghost {
+    color: #fff;
+    background: rgb(18 20 28 / 0.5);
+    -webkit-backdrop-filter: blur(14px) saturate(140%); /* taste-skill-ignore: vidro pedido no briefing da paleta */
+    backdrop-filter: blur(14px) saturate(140%); /* taste-skill-ignore: vidro pedido no briefing da paleta */
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08); /* taste-skill-ignore: luz fina na borda de cima do vidro, pedida no briefing */
+  }
+  .btn-ghost:hover { background: rgb(255 255 255 / 0.1); border-color: rgb(255 255 255 / 0.24); }
+  /* Sobre o vídeo do início não há vidro: só o contorno */
+  .btn-outline { color: #fff; background: transparent; border-color: rgb(255 255 255 / 0.42); }
+  .btn-outline:hover { background: rgb(255 255 255 / 0.12); }
+  .btn-compact { min-height: 44px; padding: 0.55rem 0.95rem; }
+  .btn .arrow { transition: transform 0.3s var(--ease-out-expo); }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  /* ============ Vidro fosco ============ */
+  .glass {
+    background: rgb(18 20 28 / 0.52);
+    -webkit-backdrop-filter: blur(16px) saturate(140%); /* taste-skill-ignore: vidro pedido no briefing da paleta */
+    backdrop-filter: blur(16px) saturate(140%); /* taste-skill-ignore: vidro pedido no briefing da paleta */
+    border: 1px solid var(--border-subtle); /* taste-skill-ignore: borda fina do vidro pedida no briefing */
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08); /* taste-skill-ignore: luz fina na borda de cima do vidro, pedida no briefing */
+    border-radius: var(--radius);
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+    text-decoration-color: var(--color-red);
+  }
+  .link-arrow:hover .arrow { transform: translateX(4px); }
+  .link-arrow .arrow { transition: transform 0.3s var(--ease-out-expo); }
+
+  /* Anotação de "a preencher" ([CONFIRMAR], [NOME DO CLIENTE], [SEGMENTO]): texto pequeno e discreto,
+     sem caixa nem borda, para não parecer botão. A cor vem do texto em volta (escuro, claro ou vermelho). */
+  .tag-pendente {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+    font-variation-settings: "wdth" 100;
+  }
+
+  /* ============ Efeito: luz que segue o mouse (só desktop) ============ */
+  .spotlight { position: relative; isolation: isolate; }
+  .spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 74, 79, 0.22), transparent 70%); /* taste-skill-ignore: luz que segue o mouse, pedida no briefing */
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .spotlight:hover::after { opacity: 1; }
+  }
+}
+
+/* ============ Brilho diagonal (assinatura da paleta) ============ */
+/* Escuro e calmo em cima à esquerda; vinho e carmesim crescendo para baixo à direita; um toque claro só na ponta.
+   Forte na chamada final, médio em Vídeos, suave em Serviços, Projetos e Contato. Só CSS, sem imagens. */
+.glow { position: relative; isolation: isolate; }
+.glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 75% at 100% 100%, rgb(224 50 74 / calc(var(--glow, 0.32) * 0.5)) 0%, rgb(179 21 44 / calc(var(--glow, 0.32) * 0.78)) 20%, rgb(90 11 23 / calc(var(--glow, 0.32) * 0.9)) 46%, transparent 74%), /* taste-skill-ignore: brilho diagonal pedido no briefing da paleta */
+    linear-gradient(135deg, transparent 42%, rgb(90 11 23 / calc(var(--glow, 0.32) * 0.55)) 100%); /* taste-skill-ignore: brilho diagonal pedido no briefing da paleta */
+}
+.glow-strong { --glow: 1; }
+.glow-medium { --glow: 0.3; }
+.glow-soft { --glow: 0.16; }
+
+/* Sem suporte a desfoque: vidro vira uma superfície sólida semitransparente */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { /* taste-skill-ignore: só verifica se o navegador tem desfoque (não aplica vidro) */
+  .glass, .btn-ghost, .nav-glass { background: rgb(26 29 39 / 0.92); }
+}
+/* Celular: menos desfoque, para a rolagem e o vídeo do início continuarem leves */
+@media (max-width: 767px) {
+  .glass, .btn-ghost, .nav-glass {
+    -webkit-backdrop-filter: blur(8px) saturate(130%); /* taste-skill-ignore: vidro fosco com borda fina pedido no briefing da paleta */
+    backdrop-filter: blur(8px) saturate(130%); /* taste-skill-ignore: vidro pedido no briefing da paleta */
+  }
+}
+
+/* Botão de vidro dentro de um cartão de vidro: mesma aparência, sem um segundo desfoque (mais leve no celular) */
+.glass .btn-ghost { background: rgb(255 255 255 / 0.06); -webkit-backdrop-filter: none; backdrop-filter: none; } /* taste-skill-ignore: aqui o desfoque é DESLIGADO (vidro dentro de vidro) */
+.glass .btn-ghost:hover { background: rgb(255 255 255 / 0.12); }
+
+/* Cabeçalho depois do início: barra de vidro flutuante, arredondada e afastada do topo */
+.nav-glass {
+  background: rgb(18 20 28 / 0.62);
+  -webkit-backdrop-filter: blur(18px) saturate(140%); /* taste-skill-ignore: vidro pedido no briefing da paleta */
+  backdrop-filter: blur(18px) saturate(140%); /* taste-skill-ignore: vidro pedido no briefing da paleta */
+  border: 1px solid var(--border-subtle); /* taste-skill-ignore: vidro fosco com borda fina pedido no briefing da paleta */
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 12px 32px -16px rgb(0 0 0 / 0.6); /* taste-skill-ignore: barra flutuante (camada real sobre a página) */
+  border-radius: 18px;
+}
+
+/* ============ Fotos do cliente (slider no card e na janela) ============ */
+/* Setas: círculo translúcido escuro com seta branca fina. Área de toque de 44px, desenho menor. */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+.slider-arrow > span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px; /* círculo pedido no briefing da galeria */
+  background: rgb(18 20 28 / 0.5);
+  border: 1px solid var(--border-subtle); /* taste-skill-ignore: vidro fosco com borda fina pedido no briefing da paleta */
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1); /* taste-skill-ignore: luz fina na borda de cima do vidro, pedida no briefing */
+  -webkit-backdrop-filter: blur(14px) saturate(140%); /* taste-skill-ignore: vidro translúcido das setas pedido no briefing da galeria */
+  backdrop-filter: blur(14px) saturate(140%); /* taste-skill-ignore: vidro translúcido das setas pedido no briefing da galeria */
+  transition: background-color 0.2s ease;
+}
+.slider-arrow:hover > span { background: rgb(18 20 28 / 0.75); }
+.slider-arrow:focus-visible { outline: none; }
+.slider-arrow:focus-visible > span { outline: 3px solid var(--color-red-hot); outline-offset: 2px; }
+.slider-big .slider-arrow { width: 56px; height: 56px; }
+.slider-big .slider-arrow > span { width: 44px; height: 44px; }
+/* Mouse: as setas do card só aparecem ao passar o mouse ou com o foco do teclado. Toque: sempre visíveis. */
+@media (hover: hover) and (pointer: fine) {
+  .slider-card .slider-arrow > span { width: 36px; height: 36px; }
+  .slider-card .slider-arrow { opacity: 0; }
+  .group\/card:hover .slider-card .slider-arrow,
+  .slider-card:focus-within .slider-arrow { opacity: 1; }
+}
+/* Pontinhos: o ativo é vermelho; os outros, brancos e fracos. Cada um tem 24px de área de toque. */
+.slider-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  padding-inline: 2px;
+  border-radius: 9999px;
+  background: rgb(18 20 28 / 0.42); /* vidro leve: os pontinhos aparecem também em fotos claras */
+  border: 1px solid var(--border-subtle); /* taste-skill-ignore: vidro fosco com borda fina pedido no briefing da paleta */
+  transform: translateX(-50%);
+}
+.slider-dots > button { display: grid; place-items: center; width: 28px; height: 28px; }
+.slider-dots > button > span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.55);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.slider-dots > button[aria-current="true"] > span { background: var(--color-red); transform: scale(1.25); }
+.slider-dots > button:focus-visible { outline: none; }
+.slider-dots > button:focus-visible > span { outline: 2px solid #fff; outline-offset: 2px; }
+.slider-big .slider-dots { bottom: 12px; }
+
+/* ============ Efeito: título entra com o corte diagonal do X ============ */
+/* A borda do corte tem a inclinação do X (36°). A área final passa um pouco do texto (acentos e "ç" não são cortados). */
+.wr-clip { display: block; }
+.wr-armed > .wr-clip { clip-path: polygon(-0.2em -0.35em, -0.2em -0.35em, -1.2em calc(100% + 0.35em), -1.2em calc(100% + 0.35em)); }
+.wr-in > .wr-clip {
+  clip-path: polygon(-0.2em -0.35em, calc(100% + 1.2em) -0.35em, calc(100% + 0.2em) calc(100% + 0.35em), -1.2em calc(100% + 0.35em));
+  transition: clip-path 0.9s var(--ease-out-expo);
+}
+
+/* Entrada simples para blocos (texto, imagem) */
+.rise-armed { opacity: 0; transform: translateY(24px); }
+.rise-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+  transition-delay: var(--d, 0ms);
+}
+
+/* ============ Hero: letreiro que acende (uma vez) ============ */
+.led-word { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .led-on .led-word {
+    animation: led-on 1s var(--ease-out-expo) both;
+    animation-delay: calc(var(--i) * 70ms + 150ms);
+  }
+}
+@keyframes led-on {
+  0% { opacity: 0.08; color: #8f8384; text-shadow: none; } /* taste-skill-ignore: brilho de letreiro LED pedido no briefing */
+  45% { opacity: 1; color: #fff; text-shadow: 0 0 14px rgba(255, 255, 255, 0.85), 0 0 38px rgba(255, 74, 79, 0.55); } /* taste-skill-ignore: brilho de letreiro LED pedido no briefing */
+  100% { opacity: 1; color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.28), 0 0 28px rgba(207, 4, 10, 0.25); } /* taste-skill-ignore: brilho de letreiro LED pedido no briefing */
+}
+.led-lit { text-shadow: 0 0 10px rgba(255, 255, 255, 0.28), 0 0 28px rgba(207, 4, 10, 0.25); } /* taste-skill-ignore: brilho de letreiro LED pedido no briefing */
+
+/* Estado inicial do início (com JavaScript): o H2, a interface e a chamada final começam escondidos */
+.js .hero-h2, .js .hero-hud, .js .hero-cta { opacity: 0; visibility: hidden; }
+.js .hero-cta-bg { clip-path: polygon(0% 0%, 0% 0%, -45% 100%, -45% 100%); }
+/* Fundo da chamada final: véu mais forte só onde fica o texto (embaixo à esquerda); a loja pronta aparece em cima à direita */
+.hero-cta-bg {
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 100%, rgb(224 50 74 / 0.42) 0%, rgb(179 21 44 / 0.6) 24%, rgb(90 11 23 / 0.5) 50%, rgb(90 11 23 / 0) 78%), /* taste-skill-ignore: brilho diagonal forte pedido no briefing da paleta */
+    linear-gradient(to top right, rgb(18 20 28 / 0.92) 0%, rgb(18 20 28 / 0.62) 45%, rgb(18 20 28 / 0.16) 100%); /* taste-skill-ignore: véu de leitura; a loja pronta aparece em cima à direita */
+}
+
+/* Sem JavaScript o vídeo não anda: o início vira uma tela só, com o primeiro quadro e o H1 */
+html:not(.js) #inicio { height: auto; }
+html:not(.js) :is(.hero-h2, .hero-hud, .hero-cue, .hero-cta, .hero-cta-bg, #inicio video) { display: none; }
+/* Sem JavaScript o cabeçalho não sabe quando o início acaba: fica sempre escuro */
+html:not(.js) header { background: var(--color-ink); }
+
+/* Celular/tablet em pé: a loja inteira (16:9) no alto, com o corte do X, e os textos logo abaixo, no fundo escuro.
+   Assim todas as peças aparecem (wind banner, totem, carro) e o vídeo não é ampliado. */
+@media (orientation: portrait) {
+  #inicio {
+    --media-h: calc(100vw * 9 / 16);
+    --media-top: calc(var(--header-h) + max(16px, (100svh - var(--header-h) - var(--media-h) - 15rem) / 2));
+  }
+  #inicio .hero-media {
+    top: var(--media-top);
+    bottom: auto;
+    height: var(--media-h);
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% calc(var(--cut) * 0.72), 100% 100%, 0 100%);
+  }
+  #inicio .hero-scrim { display: none; }
+  #inicio .hero-intro { top: calc(var(--media-top) + var(--media-h) + 24px); bottom: auto; padding-bottom: 0; }
+  #inicio .hero-h2 { top: 0; bottom: auto; }
+  /* A etiqueta da peça e a barra de progresso ficam junto do vídeo, não no pé da tela */
+  #inicio .hero-hud { top: calc(var(--media-top) + var(--media-h) + 24px); bottom: auto; }
+  #inicio .hero-bar { top: calc(var(--media-top) + var(--media-h) - 4px); bottom: auto; }
+  /* Chamada final no celular em pé: o texto passa por cima do vídeo, então o véu cobre tudo por igual */
+  #inicio .hero-cta-bg {
+    background:
+      radial-gradient(ellipse 120% 55% at 100% 100%, rgb(224 50 74 / 0.42) 0%, rgb(179 21 44 / 0.62) 24%, rgb(90 11 23 / 0.6) 50%, rgb(90 11 23 / 0) 80%), /* taste-skill-ignore: brilho diagonal pedido no briefing da paleta */
+      linear-gradient(to bottom, rgb(18 20 28 / 0.4) 0%, rgb(18 20 28 / 0.5) 40%, rgb(18 20 28 / 0.94) 72%); /* taste-skill-ignore: véu de leitura; a loja pronta continua visível em cima */
+  }
+}
+/* Vídeo do início lento ou com erro: o aviso aparece (também no lugar da lista) e a barra some se falhar */
+#inicio[data-video="erro"] video, #inicio[data-video="erro"] .hero-bar { display: none; }
+/* Lista de peças: só no celular/tablet em pé com tela alta (em telas baixas fica só a etiqueta) */
+.hero-list { display: none; }
+@media (orientation: portrait) and (min-height: 700px) {
+  #inicio .hero-hud { display: block; }
+  #inicio .hero-hud-label { display: none; }
+  #inicio:is([data-video="carregando"], [data-video="erro"]) .hero-hud-label { display: flex; margin-bottom: 0.75rem; }
+  #inicio[data-video="carregando"] .hero-list { display: none; }
+  #inicio .hero-list { display: grid; gap: 0.3rem; }
+  .hero-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--color-mute-ink);
+    transition: color 0.3s var(--ease-out-expo);
+  }
+  .hero-list li > span { display: block; width: 0.55rem; height: 0.85rem; flex: none; background: var(--color-ink-3); transform: skewX(-36deg); transition: background-color 0.3s var(--ease-out-expo); }
+  .hero-list li.is-on { color: var(--color-mute); }
+  .hero-list li.is-on > span { background: var(--color-red); }
+  .hero-list li.is-now { color: #fff; font-weight: 600; }
+  .hero-list li.is-now > span { background: var(--color-red-hot); }
+}
+
+/* Faixa de marcas: duas linhas SEMPRE andando (a de cima para a esquerda, a de baixo para a direita), sem emenda.
+   Cada trilho tem duas cópias iguais da lista; a animação anda exatamente uma cópia (-50%) e recomeça. */
+@keyframes logos-left { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+@keyframes logos-right { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+.logo-marquee {
+  display: grid;
+  gap: clamp(14px, 2.4vw, 28px);
+  /* As marcas aparecem e somem suavemente nas pontas */
+  -webkit-mask-image: linear-gradient(to right, transparent, var(--bg-base) 9%, var(--bg-base) 91%, transparent); /* taste-skill-ignore: bordas esmaecidas pedidas no briefing da faixa de marcas */
+  mask-image: linear-gradient(to right, transparent, var(--bg-base) 9%, var(--bg-base) 91%, transparent); /* taste-skill-ignore: bordas esmaecidas pedidas no briefing da faixa de marcas */
+}
+.logo-row { overflow: hidden; }
+.logo-track { display: flex; width: max-content; animation: logos-left var(--dur, 35s) linear infinite; will-change: transform; }
+.logo-row-rev .logo-track { animation-name: logos-right; }
+.logo-marquee.is-paused .logo-track { animation-play-state: paused; }
+.logo-list { display: flex; flex-shrink: 0; align-items: center; }
+.logo-item { display: flex; flex: none; align-items: center; justify-content: center; height: 80px; padding-inline: clamp(20px, 3vw, 44px); }
+/* Logos nas cores originais, todos com a mesma família de altura (28–40px no celular, 40–56px no computador) */
+.logo-item img { display: block; width: auto; height: calc(var(--k, 1) * clamp(36px, 3.9vw, 56px)); }
+/* Logos escuros: plaquinha de vidro clara atrás (sem desfoque, para a animação continuar leve) */
+.logo-item[data-tone="escuro"] .logo-plate {
+  display: block;
+  padding: 7px 14px;
+  background: rgb(246 244 242 / 0.9);
+  border: 1px solid rgb(255 255 255 / 0.6); /* taste-skill-ignore: vidro fosco com borda fina pedido no briefing da paleta */
+  border-radius: var(--radius-sm);
+}
+.logo-item[data-tone="escuro"] img { height: calc(var(--k, 1) * clamp(28px, 3.1vw, 44px)); }
+.logo-name {
+  font-weight: 800;
+  font-variation-settings: "wdth" 118;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+}
+
+/* Galeria horizontal: rolagem nativa, sem barra visível pesada */
+.hscroll {
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-red) transparent;
+}
+.hscroll > * { scroll-snap-align: start; }
+
+/* Movimento reduzido: sem deslocamentos nem zoom; mudanças de cor e estado continuam visíveis */
+@media (prefers-reduced-motion: reduce) {
+  .wr-armed > .wr-clip { clip-path: none; }
+  .rise-armed { opacity: 1; transform: none; filter: none; }
+  .group:hover img, .btn:hover .arrow, .link-arrow:hover .arrow, .btn:hover::after { transform: none !important; }
+  /* Movimento reduzido: a faixa NÃO para; só anda 3 vezes mais devagar */
+  .logo-track { animation-duration: calc(var(--dur, 35s) * 3); }
+}
+
+/* Alto contraste do Windows: o "PONTO" branco do logotipo sumiria no fundo claro do sistema */
+@media (forced-colors: active) {
+  img[src*="logo-pontox"] { forced-color-adjust: none; background: var(--color-ink); }
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}

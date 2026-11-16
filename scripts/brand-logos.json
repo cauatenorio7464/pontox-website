@@ -1,0 +1,181 @@
+[
+ {
+  "id": "maple-bear",
+  "file": "maple bear 2.jpeg",
+  "box": [
+   0.18,
+   0.488,
+   0.478,
+   0.565
+  ],
+  "mode": "dark",
+  "t": [
+   50,
+   100
+  ]
+ },
+ {
+  "id": "conversa-botequim",
+  "file": "conversa 2.jpeg",
+  "box": [
+   0.37,
+   0.62,
+   0.54,
+   0.685
+  ],
+  "mode": "light",
+  "t": [
+   50,
+   110
+  ]
+ },
+ {
+  "id": "ciocco",
+  "file": "ciocco.jpeg",
+  "box": [
+   0.245,
+   0.265,
+   0.765,
+   0.41
+  ]
+ },
+ {
+  "id": "trakto-show",
+  "file": "fusca 2.WEBP",
+  "box": [
+   0.27,
+   0.435,
+   0.85,
+   0.535
+  ],
+  "t": [
+   55,
+   120
+  ],
+  "mode": "light"
+ },
+ {
+  "id": "hustle-fight",
+  "file": "hustle.WEBP",
+  "box": [
+   0.225,
+   0.35,
+   0.89,
+   0.455
+  ],
+  "mode": "light",
+  "t": [
+   60,
+   130
+  ]
+ },
+ {
+  "id": "maikai",
+  "file": "905485936_1703885778044311_1850630863874618709_n.WEBP",
+  "box": [
+   0.13,
+   0.082,
+   0.855,
+   0.19
+  ],
+  "mode": "light",
+  "t": [
+   80,
+   150
+  ]
+ },
+ {
+  "id": "kascao",
+  "file": "kaskao.jpeg",
+  "box": [
+   0.14,
+   0.4,
+   0.8,
+   0.73
+  ],
+  "mode": "red",
+  "t": [
+   40,
+   90
+  ],
+  "rot": -9
+ },
+ {
+  "id": "bonina",
+  "file": "bonina.PNG",
+  "box": [
+   0.29,
+   0.4,
+   0.525,
+   0.47
+  ],
+  "mode": "light",
+  "t": [
+   20,
+   60
+  ]
+ },
+ {
+  "id": "noma",
+  "file": "906103415_1152521057718070_8092168104621255314_n.WEBP",
+  "box": [
+   0.512,
+   0.355,
+   0.65,
+   0.452
+  ],
+  "mode": "dark",
+  "t": [
+   60,
+   120
+  ],
+  "rot": 12,
+  "clearEdges": true
+ },
+ {
+  "id": "milklandia",
+  "file": "W:src/milklandia.png",
+  "box": [
+   0.2,
+   0.2,
+   0.915,
+   0.42
+  ],
+  "mode": "dark",
+  "t": [
+   70,
+   130
+  ],
+  "rot": -5,
+  "clearEdges": true,
+  "erase": [
+   [
+    0,
+    0.86,
+    0.5,
+    1
+   ],
+   [
+    0,
+    0.78,
+    0.27,
+    1
+   ]
+  ]
+ },
+ {
+  "id": "american-crime",
+  "file": "W:src/american.png",
+  "box": [
+   0.22,
+   0.525,
+   0.862,
+   0.65
+  ],
+  "mode": "light",
+  "t": [
+   60,
+   130
+  ]
+ }
+]
